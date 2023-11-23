@@ -28,7 +28,11 @@ class AuthorSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ['id', 'title', 'author', 'category' ,  'published_date']
+        fields = ['id', 'title', 'author', 'category' ,  'published_date', 'user']
+        read_only_fields = ('user',) 
+
+
+    
     
 
 class CategorySerializer(serializers.ModelSerializer):
