@@ -2,16 +2,16 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Book, Author, Category
+from .models import Categoría, Ingreso, Gasto
 
-@admin.register(Book)
-class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'category',  'published_date')
+@admin.register(Categoría)
+class CategoríaAdmin(admin.ModelAdmin):
+    list_display =  ['id', 'nombre', 'descripcion']
 
-@admin.register(Author)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'birth_date')
+@admin.register(Ingreso)
+class IngresoAdmin(admin.ModelAdmin):
+    list_display =  ['usuario', 'cantidad', 'fecha', 'categoría' ,  'descripcion']
 
-@admin.register(Category)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+@admin.register(Gasto)
+class GastoAdmin(admin.ModelAdmin):
+    list_display =  ['usuario', 'cantidad', 'fecha', 'categoría' ,  'descripcion']

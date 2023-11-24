@@ -7,29 +7,21 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
-from .models import Author, Book, Category
-from .serializers import AuthorSerializer, BookSerializer, CategorySerializer
+from .models import Categoría, Ingreso, Gasto
+from .serializers import CategoríaSerializer, IngresoSerializer, GastoSerializer
 
 
-class AuthorViewSet(viewsets.ModelViewSet):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
+class CategoriaViewset(viewsets.ModelViewSet):
+    queryset = Categoría.objects.all()
+    serializer_class = CategoríaSerializer
 
-class BookViewSet(viewsets.ModelViewSet):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    serializer_class = BookSerializer
-    queryset = Book.objects.all()
+class IngresoViewset(viewsets.ModelViewSet):
+    queryset = Ingreso.objects.all()
+    serializer_class = IngresoSerializer
 
-    def get_queryset(self):
-        return Book.objects.filter(user=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+class GastoViewset(viewsets.ModelViewSet):
+    queryset = Gasto.objects.all()
+    serializer_class = GastoSerializer
 
 
 @api_view(['POST'])
